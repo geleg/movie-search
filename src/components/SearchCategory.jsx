@@ -12,13 +12,9 @@ const Search = () => {
 
 
     const buttonHandler = () => {
-        const searchTerm = inputoRef.current.value;
-        
-        inputoRef.current.value = ''
-        
-        if (searchTerm) {
+  
             axios
-                .get(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&language=en-US${apiRaktas}`)
+                .get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc${apiRaktas}`)
                 .then((response) => {
                     setError(null);
                     setMovie(response.data.results);
@@ -27,19 +23,18 @@ const Search = () => {
                     setError(error);
                     setMovie([]);
                 });
-        }
+
     };
 
     return (
 
         <>
-            <h1>Movie Search</h1>
+            <h1>Most popular movies</h1>
 
             <div>
                 <div>
                     <label >Movie title:</label>
-                    <input type="text" ref={inputoRef} />
-                    <button onClick={buttonHandler}>Search</button>
+                    <button onClick={buttonHandler}>Show most popular movies</button>
                 </div>
 
                 <div>
@@ -56,7 +51,7 @@ const Search = () => {
                             ))}
                         </ul>
                     ) : (
-                        <p>No movies found or search yet.</p>
+                        <p>No search yet.</p>
                     )}
                 </div>
                 
