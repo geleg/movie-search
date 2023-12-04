@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+h1 {
+  text-align: center;
+}
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+}
+
+
+.movieInfo {
+  align-items: center;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  margin: 5px 5px;
+  text-align: center;
+  border-radius: 20px;
+
+}
+
+.movieList .title {
+  font-weight: bold;
+}
+
+body {
+  background-color: aliceblue;
+}

@@ -44,14 +44,13 @@ const Search = () => {
 
                 <div>
                     {movie.length > 0 ? (
-                        <ul>
+                        <ul className='movieList'>
                             {movie.map((movie) => (
-                                <li className='movieInfo'>
-                                    <p>Title: {movie.original_title}</p>
+                                    <li className='movieInfo'>
+                                    <p className='title'>{movie.original_title}</p>
+                                    <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="posteris" />
                                     <p>Release date: {movie.release_date}</p>
                                     <p>Vote: {movie.vote_average}</p>
-                                    <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="posteris" />
-                                    <p>**********</p> <br />
                                 </li>
                             ))}
                         </ul>
