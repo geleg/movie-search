@@ -9,14 +9,16 @@ const Search = () => {
 
     const [movie, setMovie] = useState([]);
     const [error, setError] = useState(null);
+    const [searchError, setSearchError] = useState('');
+
 
 
     const buttonHandler = () => {
         const searchTerm = inputoRef.current.value;
-        
+
         inputoRef.current.value = ''
-        
-        if (searchTerm) {
+
+        if (searchTerm.length >= 2) {
             axios
                 .get(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&language=en-US${apiRaktas}`)
                 .then((response) => {
@@ -27,6 +29,9 @@ const Search = () => {
                     setError(error);
                     setMovie([]);
                 });
+            setSearchError(''); 
+        } else {
+            setSearchError('Search term must be at least 2 characters long.');
         }
     };
 
@@ -38,7 +43,8 @@ const Search = () => {
             <div>
                 <div>
                     <label >Movie title:</label>
-                    <input type="text" ref={inputoRef} />
+                    <input type="text" ref={inputoRef}/>
+                    {searchError && <p style={{ color: 'red' }}>{searchError}</p>}
                     <button onClick={buttonHandler}>Search</button>
                 </div>
 
@@ -46,7 +52,7 @@ const Search = () => {
                     {movie.length > 0 ? (
                         <ul className='movieList'>
                             {movie.map((movie) => (
-                                    <li className='movieInfo'>
+                                <li className='movieInfo'>
                                     <p className='title'>{movie.original_title}</p>
                                     <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="posteris" />
                                     <p>Release date: {movie.release_date}</p>
@@ -58,7 +64,7 @@ const Search = () => {
                         <p>No movies found or search yet.</p>
                     )}
                 </div>
-                
+
 
             </div>
         </>
