@@ -10,7 +10,7 @@ const Search = () => {
     const [searchError, setSearchError] = useState('');
     const [storedMovies, setStoredMovies] = useState([]);
 
-    // Function to add a movie to local storage
+  
     const addToLocalStorage = (movieData) => {
         const updatedMovies = [...storedMovies, movieData];
         localStorage.setItem('movies', JSON.stringify(updatedMovies));
