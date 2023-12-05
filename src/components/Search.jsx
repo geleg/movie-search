@@ -17,7 +17,7 @@ const Search = () => {
         setStoredMovies(updatedMovies);
     };
 
-    // Function to remove a movie from local storage
+    
     const removeFromLocalStorage = (movieId) => {
         const updatedMovies = storedMovies.filter((movie) => movie.id !== movieId);
         localStorage.setItem('movies', JSON.stringify(updatedMovies));
@@ -51,16 +51,16 @@ const Search = () => {
         }
     };
 
-    // Function to handle adding a movie to local storage
+    
     const handleAddToLocalStorage = (movieData) => {
         addToLocalStorage(movieData);
-        // Additional logic if needed after adding to local storage
+       
     };
 
-    // Function to handle removing a movie from local storage
+    
     const handleRemoveFromLocalStorage = (movieId) => {
         removeFromLocalStorage(movieId);
-        // Additional logic if needed after removing from local storage
+        
     };
 
     return (
@@ -84,7 +84,7 @@ const Search = () => {
                                     <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="posteris" />
                                     <p>Release date: {movie.release_date}</p>
                                     <p>Vote: {movie.vote_average}</p>
-                                    {/* Add button to add movie to local storage */}
+                                
                                     <button onClick={() => handleAddToLocalStorage(movie)}>Add to Favorites</button>
                                 </li>
                             ))}
@@ -94,7 +94,7 @@ const Search = () => {
                     )}
                 </div>
 
-                {/* Section to display stored movies */}
+               
                 <div>
                     <h1>Stored Movies</h1>
                     <ul className='movieList'>
@@ -105,7 +105,7 @@ const Search = () => {
                                     <img src={`https://image.tmdb.org/t/p/w200${storedMovie.poster_path}`} alt="posteris" />
                                     <p>Release date: {storedMovie.release_date}</p>
                                     <p>Vote: {storedMovie.vote_average}</p>
-                                    {/* Move remove button to this section */}
+                                  
                                     <button onClick={() => handleRemoveFromLocalStorage(storedMovie.id)}>Remove from Favorites</button>
                                 </li>
                             ))
