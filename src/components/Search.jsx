@@ -67,6 +67,15 @@ const Search = () => {
     const handleRemoveFromLocalStorage = (movieId) => {
         removeFromLocalStorage(movieId);
     };
+    
+    const favoriteMovieList = document.getElementsByClassName('favoriteMovieList')
+
+    const deleteFavoriteList = () => {
+        localStorage.clear()
+
+        setStoredMovies('')
+
+    }
 
     // Render JSX
     return (
@@ -83,7 +92,7 @@ const Search = () => {
                 </div>
 
                 {/* Display search results */}
-                <div>
+                <div >
                     {movie.length > 0 ? (
                         <ul className='movieList'>
                             {movie.map((movie) => (
@@ -105,10 +114,11 @@ const Search = () => {
 
                 {/* Display stored movies */}
                 <div>
-                    <h1>Stored Movies</h1>
-                    <ul className='movieList'>
-                        {storedMovies.length > 0 ? (
-                            storedMovies.map((storedMovie) => (
+                    <h1>Favorite Movies</h1>
+                   
+                        
+                        {storedMovies.length > 0 ? ( <ul className='movieList favoriteMovieList' >
+                            {storedMovies.map((storedMovie) => (
                                 <li className='movieInfo' key={storedMovie.id}>
                                     {/* Display stored movie information */}
                                     <p className='title'>{storedMovie.original_title}</p>
@@ -118,11 +128,13 @@ const Search = () => {
                                     {/* Button to remove movie from favorites */}
                                     <button onClick={() => handleRemoveFromLocalStorage(storedMovie.id)}>Remove from Favorites</button>
                                 </li>
-                            ))
+                            ))}
+                            </ul>
                         ) : (
                             <p>No stored movies yet.</p>
                         )}
-                    </ul>
+                    
+                    <button onClick={deleteFavoriteList}>Clear favorite movie list</button>
                 </div>
             </div>
         </>
