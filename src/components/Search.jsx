@@ -84,7 +84,7 @@ const Search = () => {
 
             <div>
                 {/* Search input and button */}
-                <div>
+                <div className='flex'>
                     <label>Movie title:</label>
                     <input type="text" ref={inputoRef} />
                     {searchError && <p style={{ color: 'red' }}>{searchError}</p>}
@@ -108,7 +108,7 @@ const Search = () => {
                             ))}
                         </ul>
                     ) : (
-                        <p>No movies found or search yet.</p>
+                        <p className='flex'>No movies found or search yet.</p>
                     )}
                 </div>
 
@@ -131,10 +131,10 @@ const Search = () => {
                             ))}
                             </ul>
                         ) : (
-                            <p>No stored movies yet.</p>
+                            <p className='flex'>No stored movies yet.</p>
                         )}
-                    
-                    <button onClick={deleteFavoriteList}>Clear favorite movie list</button>
+                    <div className='flex'> <button  onClick={deleteFavoriteList}>Clear favorite movie list</button></div>
+                   
                 </div>
             </div>
         </>

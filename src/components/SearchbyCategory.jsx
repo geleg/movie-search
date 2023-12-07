@@ -61,7 +61,7 @@ const Category = () => {
         <>
             <h1>Search Movie by Category</h1>
             {/* Dropdown to select movie category */}
-            <div>
+            <div className='flex'>
                 <select value={selectedCategory} onChange={handleCategoryChange}>
                     <option value="">Select a category</option>
                     {genres.map((genre) => (
@@ -88,7 +88,7 @@ const Category = () => {
                     </ul>
                 ) : (
                     // Displays a message if no movies are found or fetched yet
-                    <p>No movies found or search yet.</p>
+                    <p className='flex'>No movies found or search yet.</p>
                 )}
             </div>
         </>
